@@ -1,3 +1,4 @@
+# Class: rack::app
 #
 # Defines a simple wrapper for installing a rack app at a sub uri.
 #
