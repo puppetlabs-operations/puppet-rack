@@ -20,14 +20,20 @@
 #   doc_root  => "/var/www",
 #   app_root => "/opt/freddy",
 # }
-define rack::app($ensure, $doc_root, $app_root) {
+#
+define rack::app(
+  $ensure,
+  $doc_root,
+  $app_root
+) {
+
+  include rack
 
   case $ensure {
     present: { $file_ensure = 'link' }
     absent:  { $file_ensure = 'absent' }
     default: { fail("rack::app ensure needs to be one of [present, absent], got ${ensure}") }
   }
-
 
   file { "${doc_root}/${name}":
     ensure => $file_ensure,
