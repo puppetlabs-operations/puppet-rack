@@ -9,8 +9,10 @@ class rack(
 
   require ruby
 
-  package { 'rack':
-    ensure   => $ensure,
-    provider => $provider,
+  if !defined(Package['rack']) { 
+    package { 'rack':
+      ensure   => $ensure,
+      provider => $provider,
+    }
   }
 }
